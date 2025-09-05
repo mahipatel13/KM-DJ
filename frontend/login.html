@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+  <label>Email:</label>
+  <input type="email" name="email" required>
+      <label>Password:</label>
+      <input type="password" name="password" required> 
+      <button type="submit">Login</button>
+    </form>
+      <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+      <div id="forgotModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;">
+        <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
+          <button id="closeModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;">&times;</button>
+          <h2 style="text-align:center;margin-bottom:24px;">Set New Password</h2>
+          <form id="resetForm" style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <label for="resetEmail">Email:</label>
+              <input type="email" name="email" id="resetEmail" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div>
+              <label for="newPassword">New Password:</label>
+              <input type="password" name="newPassword" id="newPassword" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div>
+              <label for="confirmPassword">Confirm Password:</label>
+              <input type="password" name="confirmPassword" id="confirmPassword" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <button type="submit" style="width:100%;padding:12px;background:#111;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Set New Password</button>
+          </form>
+        </div>
+      </div>
+      <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+  </div>
+  <div id="footer"></div>
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+  <script>
+    importComponent('header', 'components/header.html');
+    importComponent('footer', 'components/footer.html');
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = this.email.value;
+      const password = this.password.value;
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      alert(data.message);
+      if (data.success) window.location.href = 'index.html';
+    });
+      // Forgot Password Modal
+      const forgotLink = document.getElementById('forgotPasswordLink');
+      const forgotModal = document.getElementById('forgotModal');
+      const closeModal = document.getElementById('closeModal');
+      const resetForm = document.getElementById('resetForm');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+
+      confirmPasswordInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+          resetForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      });
+
+      forgotLink.onclick = () => { forgotModal.style.display = 'block'; };
+      closeModal.onclick = () => { forgotModal.style.display = 'none'; };
+      resetForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('resetEmail').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (newPassword !== confirmPassword) {
+          alert('New Password and Confirm Password do not match!');
+          document.getElementById('confirmPassword').focus();
+          return;
+        }
+        // In a real app, you'd send a reset token. For now, we send the email.
+        const res = await fetch('/api/auth/reset', { // Updated endpoint
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, newPassword })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Password set successfully!');
+          // On success, hide the modal and reload the login page to clear the form.
+          forgotModal.style.display = 'none';
+          window.location.href = 'login.html'; // This will redirect to the login page.
+        } else {
+          alert(data.message); // Show error message from the server if it fails
+        }
+      });
+  </script>
+</body>
+</html>

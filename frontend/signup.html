@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <h1>Create an Account</h1>
+    <form id="signupForm">
+      <label>Username:</label>
+      <input type="text" name="username" required>
+      <label>Email:</label>
+      <input type="email" name="email" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <label>Confirm Password:</label>
+      <input type="password" name="confirm_password" required>
+      <button type="submit">Create Account</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Sign in</a></p>
+  </div>
+  <div id="footer"></div>
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+  <script>
+    importComponent('header', 'components/header.html');
+    importComponent('footer', 'components/footer.html');
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const username = this.username.value;
+      const email = this.email.value;
+      const password = this.password.value;
+      const confirm_password = this.confirm_password.value;
+      if (password !== confirm_password) {
+        alert('Passwords do not match!');
+        return;
+      }
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+      });
+      const data = await res.json();
+      alert(data.message);
+      if (data.success) window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
