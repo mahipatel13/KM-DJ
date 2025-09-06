@@ -1,4 +1,4 @@
-# NoirAuth Simple App
+# SynergySphere Website
 
 A simple web app with frontend and backend structure.
 
