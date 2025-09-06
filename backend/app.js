@@ -1,5 +1,5 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config');
 const app = express();
@@ -13,6 +13,7 @@ mongoose.connect(config.mongoUri).then(() => {
 });
 
 app.use(express.json());
+// Serve static files from the frontend folder
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('/api/auth', authRoutes);
 

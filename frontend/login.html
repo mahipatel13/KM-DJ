@@ -19,13 +19,17 @@
   </header>
   <div class="container fade-in-slide-up">
     <h1>Login</h1>
-    <form id="loginForm">
-  <label>Email:</label>
-  <input type="email" name="email" required>
-      <label>Password:</label>
-      <input type="password" name="password" required> 
-      <button type="submit">Login</button>
-    </form>
+  <form id="loginForm">
+    <label>User ID:</label>
+    <input type="text" name="userId" id="userIdInput" required>
+
+    <label>Email:</label>
+    <input type="Email" name="Email" required> 
+
+    <label>Password:</label>
+    <input type="password" name="password" required> 
+    <button type="submit">Login</button>
+  </form>
     <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
     <div id="forgotModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;">
       <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
@@ -49,7 +53,7 @@
       </div>
     </div>
     <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
-    <!-- Add this after the login form but before the "Don't have an account" text -->
+    
     
     </div>
   </div>
@@ -58,64 +62,69 @@
   <script src="js/animation.js"></script>
   <script>
     importComponent('footer', 'components/footer.html');
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = this.email.value;
-      const password = this.password.value;
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (data.success) {
-        alert('Welcome, ' + data.name + '!');
-        window.location.href = 'index.html';
-      } else {
-        alert(data.message);
-      }
-    });
-      // Forgot Password Modal
-      const forgotLink = document.getElementById('forgotPasswordLink');
-      const forgotModal = document.getElementById('forgotModal');
-      const closeModal = document.getElementById('closeModal');
-      const resetForm = document.getElementById('resetForm');
-      const confirmPasswordInput = document.getElementById('confirmPassword');
-
-      confirmPasswordInput.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-          resetForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-        }
-      });
-
-      forgotLink.onclick = () => { forgotModal.style.display = 'block'; };
-      closeModal.onclick = () => { forgotModal.style.display = 'none'; };
-      resetForm.addEventListener('submit', async function(e) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        const email = document.getElementById('resetEmail').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        if (newPassword !== confirmPassword) {
-          alert('New Password and Confirm Password do not match!');
-          document.getElementById('confirmPassword').focus();
-          return;
-        }
-        // In a real app, you'd send a reset token. For now, we send the email.
-        const res = await fetch('/api/auth/reset', { // Updated endpoint
+        const userId = this.userId.value;
+        const password = this.password.value;
+        const res = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, newPassword })
+          body: JSON.stringify({ userId, password })
         });
         const data = await res.json();
+        alert(data.message);
         if (data.success) {
-          alert('Password set successfully!');
-          // On success, hide the modal and reload the login page to clear the form.
-          forgotModal.style.display = 'none';
-          window.location.href = 'login.html'; // This will redirect to the login page.
-        } else {
-          alert(data.message); // Show error message from the server if it fails
+          // If CEO, redirect to ceo-dashboard.html, else to index.html
+          if (data.role && data.role.toLowerCase() === 'ceo') {
+            window.location.href = 'ceo-dashboard.html';
+          } else {
+            window.location.href = 'index.html';
+          }
         }
       });
+        // Forgot Password Modal
+        const forgotLink = document.getElementById('forgotPasswordLink');
+        const forgotModal = document.getElementById('forgotModal');
+        const closeModal = document.getElementById('closeModal');
+        const resetForm = document.getElementById('resetForm');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        confirmPasswordInput.addEventListener('keyup', function(event) {
+          if (event.key === 'Enter') {
+            resetForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+          }
+        });
+
+        forgotLink.onclick = () => { forgotModal.style.display = 'block'; };
+        closeModal.onclick = () => { forgotModal.style.display = 'none'; };
+        resetForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const email = document.getElementById('resetEmail').value;
+          const newPassword = document.getElementById('newPassword').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          if (newPassword !== confirmPassword) {
+            alert('New Password and Confirm Password do not match!');
+            document.getElementById('confirmPassword').focus();
+            return;
+          }
+          // In a real app, you'd send a reset token. For now, we send the email.
+          const res = await fetch('/api/auth/reset', { // Updated endpoint
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, newPassword })
+          });
+          const data = await res.json();
+          if (data.success) {
+            alert('Password set successfully!');
+            // On success, hide the modal and reload the login page to clear the form.
+            forgotModal.style.display = 'none';
+            window.location.href = 'login.html';
+          } else {
+            alert(data.message); 
+          }
+        });
+    });
   </script>
 </body>
 </html>
