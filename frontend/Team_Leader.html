@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Control - Team Leader Dashboard</title>
+    <link rel="stylesheet" href="css/Team_Leader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" style="background:#fff;color:#222;">
+            <div class="sidebar-header">
+                <h2 style="color:#222;">Mission Control</h2>
+                <p style="color:#444;">Team Leader Dashboard</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-th-large"></i> Dashboard
+                    </li>
+                    <li class="nav-item" data-page="manage-team">
+                        <i class="fas fa-users"></i> Manage My Team
+                    </li>
+                    <li class="nav-item" data-page="projects">
+                        <i class="fas fa-project-diagram"></i> My Projects
+                    </li>
+                    <li class="nav-item" data-page="tasks">
+                        <i class="fas fa-tasks"></i> My Tasks
+                    </li>
+                    <li class="nav-item" data-page="announcements">
+                        <i class="fas fa-bullhorn"></i> Announcements
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile" style="background:#fff;">
+                <div class="avatar" id="leaderAvatar" style="background:#222;color:#fff;">TL</div>
+                <div class="user-info" id="leaderUserInfo">
+                    <h3 id="leaderName" style="color:#222;">Team Leader</h3>
+                    <p id="leaderRole" style="color:#444;">Team Leader</p>
+                    <p id="leaderId" style="font-size:12px;color:#888;"></p>
+                    <p id="leaderEmail" style="font-size:12px;color:#888;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Dashboard Page -->
+            <div class="page" id="dashboard-page" style="display: block;">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, Sarah! Here's your team overview.</p>
+                    <div class="last-updated">Last updated <span>2 minutes ago</span></div>
+                </div>
+                
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <h3>Total Members</h3>
+                        <div class="metric-value">3</div>
+                        <div class="metric-trend positive">+2 this month</div>
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Active Projects</h3>
+                        <div class="metric-value">2</div>
+                        <div class="metric-trend">1 completing soon</div>
+                        <div class="metric-icon"><i class="fas fa-folder"></i></div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Pending Tasks</h3>
+                        <div class="metric-value">5</div>
+                        <div class="metric-trend negative">-3 from last week</div>
+                        <div class="metric-icon"><i class="fas fa-clipboard-list"></i></div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Completed This Month</h3>
+                        <div class="metric-value">12</div>
+                        <div class="metric-trend positive">+40% from last month</div>
+                        <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <div class="section announcements-section">
+                        <div class="section-header">
+                            <i class="fas fa-bullhorn"></i>
+                            <h2>Recent Announcements</h2>
+                        </div>
+                        <div class="announcement-item">
+                            <div class="announcement-dot"></div>
+                            <div class="announcement-content">
+                                <h3>Q1 Company Meeting</h3>
+                                <p>All hands meeting scheduled for February 15th to discuss Q1 goals and achievements.</p>
+                                <div class="announcement-meta">By CEO • 2025-01-10</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section tasks-section">
+                        <div class="section-header">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h2>Pending Tasks</h2>
+                        </div>
+                        <div class="task-item">
+                            <h3>Setup payment gateway integration</h3>
+                            <p>Assigned to Emma Wilson</p>
+                            <div class="task-meta">
+                                <span class="priority medium">Medium</span>
+                                <span class="due-date">Due: 2025-01-30</span>
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <h3>Implement push notifications</h3>
+                            <p>Assigned to Michael Brown</p>
+                            <div class="task-meta">
+                                <span class="priority low">Low</span>
+                                <span class="due-date">Due: 2025-02-05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Team Page -->
+            <div class="page" id="manage-team-page">
+                <div class="page-header">
+                    <h1>Manage My Team</h1>
+                    <p>Manage your team members, roles, and performance.</p>
+                    <button class="add-member-btn"><i class="fas fa-plus"></i> Add Member</button>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="team-overview">Team Overview</div>
+                        <div class="tab" data-tab="performance-analytics">Performance Analytics</div>
+                        <div class="tab" data-tab="member-management">Member Management</div>
+                    </div>
+
+                    <div class="tab-content" id="team-overview-content" style="display: block;">
+                        <div class="metrics-container">
+                            <div class="metric-card">
+                                <h3>Total Members</h3>
+                                <div class="metric-value">3</div>
+                                <div class="metric-icon"><i class="fas fa-users"></i></div>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Total Tasks Completed</h3>
+                                <div class="metric-value">73</div>
+                                <div class="metric-icon"><i class="fas fa-check-circle"></i></div>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Pending Tasks</h3>
+                                <div class="metric-value">10</div>
+                                <div class="metric-icon"><i class="fas fa-clipboard-list"></i></div>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Missed Deadlines</h3>
+                                <div class="metric-value">3</div>
+                                <div class="metric-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="team-details">
+                            <div class="section-header">
+                                <i class="fas fa-users"></i>
+                                <h2>Team Details</h2>
+                            </div>
+                            <div class="team-info">
+                                <div class="info-row">
+                                    <div class="info-label">Team Name</div>
+                                    <div class="info-value">Development Team Alpha</div>
+                                </div>
+                                <div class="info-row">
+                                    <div class="info-label">Description</div>
+                                    <div class="info-value">Frontend and Backend Development Team</div>
+                                </div>
+                                <div class="info-row">
+                                    <div class="info-label">Average Efficiency</div>
+                                    <div class="info-value">84%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="performance-analytics-content">
+                        <div class="charts-container">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <h3>Task Performance by Member</h3>
+                                </div>
+                                <div class="chart" id="task-performance-chart">
+                                    <!-- Chart will be rendered here by JS -->
+                                    <img src="task-performance-chart.png" alt="Task Performance Chart" class="placeholder-chart">
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <h3>Role Distribution</h3>
+                                </div>
+                                <div class="chart" id="role-distribution-chart">
+                                    <!-- Chart will be rendered here by JS -->
+                                    <img src="role-distribution-chart.png" alt="Role Distribution Chart" class="placeholder-chart">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-card full-width">
+                            <div class="chart-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Team Member Efficiency</h3>
+                            </div>
+                            <div class="chart" id="efficiency-chart">
+                                <!-- Chart will be rendered here by JS -->
+                                <img src="efficiency-chart.png" alt="Efficiency Chart" class="placeholder-chart">
+                            </div>
+                        </div>
+
+                        <div class="performance-insights">
+                            <div class="section-header">
+                                <h2>Performance Insights</h2>
+                            </div>
+                            <div class="team-members">
+                                <div class="member-card">
+                                    <div class="member-avatar">JS</div>
+                                    <div class="member-details">
+                                        <h3>John Smith</h3>
+                                        <div class="member-role">Member</div>
+                                        <div class="member-stats">
+                                            <div class="stat-label">Efficiency</div>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 86%;"></div>
+                                            </div>
+                                            <div class="stat-value">86%</div>
+                                        </div>
+                                        <div class="task-stats">
+                                            <div class="completed-tasks">24 completed</div>
+                                            <div class="pending-tasks">3 pending</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card">
+                                    <div class="member-avatar">EW</div>
+                                    <div class="member-details">
+                                        <h3>Emma Wilson</h3>
+                                        <div class="member-role sub-leader">Sub-Leader</div>
+                                        <div class="member-stats">
+                                            <div class="stat-label">Efficiency</div>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 94%;"></div>
+                                            </div>
+                                            <div class="stat-value">94%</div>
+                                        </div>
+                                        <div class="task-stats">
+                                            <div class="completed-tasks">31 completed</div>
+                                            <div class="pending-tasks">2 pending</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card">
+                                    <div class="member-avatar">MB</div>
+                                    <div class="member-details">
+                                        <h3>Michael Brown</h3>
+                                        <div class="member-role">Member</div>
+                                        <div class="member-stats">
+                                            <div class="stat-label">Efficiency</div>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 72%;"></div>
+                                            </div>
+                                            <div class="stat-value">72%</div>
+                                        </div>
+                                        <div class="task-stats">
+                                            <div class="completed-tasks">18 completed</div>
+                                            <div class="pending-tasks">5 pending</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="member-management-content">
+                        <div class="member-management">
+                            <div class="section-header">
+                                <h2>Team Members</h2>
+                            </div>
+                            <div class="member-list">
+                                <div class="member-row header">
+                                    <div class="member-col">Name</div>
+                                    <div class="member-col">Role</div>
+                                    <div class="member-col">Tasks</div>
+                                    <div class="member-col">Efficiency</div>
+                                    <div class="member-col">Actions</div>
+                                </div>
+                                <div class="member-row">
+                                    <div class="member-col">
+                                        <div class="member-info">
+                                            <div class="member-avatar">JS</div>
+                                            <div>John Smith</div>
+                                        </div>
+                                    </div>
+                                    <div class="member-col">Member</div>
+                                    <div class="member-col">24 / 27</div>
+                                    <div class="member-col">
+                                        <div class="progress-bar small">
+                                            <div class="progress" style="width: 86%;"></div>
+                                        </div>
+                                        <span>86%</span>
+                                    </div>
+                                    <div class="member-col">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="member-row">
+                                    <div class="member-col">
+                                        <div class="member-info">
+                                            <div class="member-avatar">EW</div>
+                                            <div>Emma Wilson</div>
+                                        </div>
+                                    </div>
+                                    <div class="member-col">Sub-Leader</div>
+                                    <div class="member-col">31 / 33</div>
+                                    <div class="member-col">
+                                        <div class="progress-bar small">
+                                            <div class="progress" style="width: 94%;"></div>
+                                        </div>
+                                        <span>94%</span>
+                                    </div>
+                                    <div class="member-col">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="member-row">
+                                    <div class="member-col">
+                                        <div class="member-info">
+                                            <div class="member-avatar">MB</div>
+                                            <div>Michael Brown</div>
+                                        </div>
+                                    </div>
+                                    <div class="member-col">Member</div>
+                                    <div class="member-col">18 / 23</div>
+                                    <div class="member-col">
+                                        <div class="progress-bar small">
+                                            <div class="progress" style="width: 72%;"></div>
+                                        </div>
+                                        <span>72%</span>
+                                    </div>
+                                    <div class="member-col">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Page -->
+            <div class="page" id="projects-page">
+                <div class="page-header">
+                    <h1>My Projects</h1>
+                    <p>Manage and track your ongoing projects.</p>
+                    <button class="add-project-btn"><i class="fas fa-plus"></i> Add Project</button>
+                </div>
+                
+                <div class="projects-container">
+                    <div class="project-card" data-project="ecommerce">
+                        <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="project-details">
+                            <h3>E-commerce Project</h3>
+                            <p>Online shopping platform development</p>
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%;"></div>
+                                </div>
+                                <span>75% Complete</span>
+                            </div>
+                            <div class="project-meta">
+                                <span><i class="fas fa-users"></i> 3 Members</span>
+                                <span><i class="fas fa-tasks"></i> 8 Tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-project="mobile-app">
+                        <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="project-details">
+                            <h3>Mobile App Development</h3>
+                            <p>Cross-platform mobile application</p>
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 45%;"></div>
+                                </div>
+                                <span>45% Complete</span>
+                            </div>
+                            <div class="project-meta">
+                                <span><i class="fas fa-users"></i> 2 Members</span>
+                                <span><i class="fas fa-tasks"></i> 12 Tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-project="database">
+                        <div class="project-icon"><i class="fas fa-database"></i></div>
+                        <div class="project-details">
+                            <h3>Database Migration</h3>
+                            <p>Legacy system database migration</p>
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 30%;"></div>
+                                </div>
+                                <span>30% Complete</span>
+                            </div>
+                            <div class="project-meta">
+                                <span><i class="fas fa-users"></i> 2 Members</span>
+                                <span><i class="fas fa-tasks"></i> 6 Tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="tasks-page">
+                <div class="page-header">
+                    <h1>My Tasks</h1>
+                    <p>View and manage your assigned tasks.</p>
+                    <div class="task-filters">
+                        <button class="filter-btn active" data-filter="all">All Tasks</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+                
+                <div class="tasks-container">
+                    <div class="task-card" data-status="pending" data-project="ecommerce">
+                        <div class="task-header">
+                            <h3>Setup payment gateway integration</h3>
+                            <span class="task-project">E-commerce Project</span>
+                        </div>
+                        <p class="task-description">Integrate Stripe payment gateway with the checkout process</p>
+                        <div class="task-meta">
+                            <div class="task-assignee">
+                                <div class="member-avatar small">EW</div>
+                                <span>Emma Wilson</span>
+                            </div>
+                            <div class="task-due-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>Due: 2025-01-30</span>
+                            </div>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-priority medium">Medium Priority</span>
+                            <div class="task-actions">
+                                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn complete"><i class="fas fa-check"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="pending" data-project="mobile-app">
+                        <div class="task-header">
+                            <h3>Implement push notifications</h3>
+                            <span class="task-project">Mobile App Development</span>
+                        </div>
+                        <p class="task-description">Add push notification functionality for iOS and Android</p>
+                        <div class="task-meta">
+                            <div class="task-assignee">
+                                <div class="member-avatar small">MB</div>
+                                <span>Michael Brown</span>
+                            </div>
+                            <div class="task-due-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>Due: 2025-02-05</span>
+                            </div>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-priority low">Low Priority</span>
+                            <div class="task-actions">
+                                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn complete"><i class="fas fa-check"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-status="completed" data-project="database">
+                        <div class="task-header">
+                            <h3>Create database schema</h3>
+                            <span class="task-project">Database Migration</span>
+                        </div>
+                        <p class="task-description">Design and implement the new database schema</p>
+                        <div class="task-meta">
+                            <div class="task-assignee">
+                                <div class="member-avatar small">JS</div>
+                                <span>John Smith</span>
+                            </div>
+                            <div class="task-due-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>Completed: 2025-01-15</span>
+                            </div>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-priority high">High Priority</span>
+                            <div class="task-actions">
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn reopen"><i class="fas fa-redo"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="announcements-page">
+                <div class="page-header">
+                    <h1>Announcements</h1>
+                    <p>Stay updated with company and team announcements.</p>
+                    <button class="btn-primary create-announcement-btn"><i class="fas fa-plus"></i> Create Team Announcement</button>
+                </div>
+                
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <h3>Total Announcements</h3>
+                        <div class="metric-value">3</div>
+                        <div class="metric-icon"><i class="fas fa-bullhorn"></i></div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Unread</h3>
+                        <div class="metric-value">1</div>
+                        <div class="metric-icon"><i class="fas fa-bell"></i></div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Team Announcements</h3>
+                        <div class="metric-value">1</div>
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                    </div>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All Announcements (3)</button>
+                    <button class="filter-btn" data-filter="company">Company (2)</button>
+                    <button class="filter-btn" data-filter="team">Team (1)</button>
+                </div>
+                
+                <div class="announcements-list">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Q1 Company Meeting</h3>
+                            <span class="announcement-tag company">Company</span>
+                            <button class="mark-read-btn"><i class="fas fa-check-circle"></i> Mark Read</button>
+                        </div>
+                        <div class="announcement-body">
+                            <p>All hands meeting scheduled for February 15th to discuss Q1 goals and achievements.</p>
+                        </div>
+                        <div class="announcement-footer">
+                            <div class="announcement-meta">By CEO • 2025-01-10</div>
+                            <span class="announcement-status new">New</span>
+                        </div>
+                    </div>
+                    
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>New Security Protocols</h3>
+                            <span class="announcement-tag company">Company</span>
+                        </div>
+                        <div class="announcement-body">
+                            <p>Updated security protocols are now in effect. Please review the new guidelines in the handbook.</p>
+                        </div>
+                        <div class="announcement-footer">
+                            <div class="announcement-meta">By IT Department • 2025-01-08</div>
+                        </div>
+                    </div>
+                    
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Team Sprint Review</h3>
+                            <span class="announcement-tag team">Team</span>
+                        </div>
+                        <div class="announcement-body">
+                            <p>Great work on the current sprint! Our velocity has increased by 20% this quarter.</p>
+                        </div>
+                        <div class="announcement-footer">
+                            <div class="announcement-meta">By Team Leader • 2025-01-05</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Made with Emergent</p>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="add-member-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Team Member</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-member-form">
+                    <div class="form-group">
+                        <label for="member-name">Full Name</label>
+                        <input type="text" id="member-name" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-email">Email Address</label>
+                        <input type="email" id="member-email" placeholder="Enter email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-role">Role</label>
+                        <select id="member-role" required>
+                            <option value="">Select a role</option>
+                            <option value="member">Member</option>
+                            <option value="sub-leader">Sub-Leader</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-project">Assign to Project</label>
+                        <select id="member-project">
+                            <option value="">Select a project (optional)</option>
+                            <option value="ecommerce">E-commerce Project</option>
+                            <option value="mobile-app">Mobile App Development</option>
+                            <option value="database">Database Migration</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="project-detail-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="project-detail-title">Project Details</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-content">
+                    <!-- Content will be dynamically populated by JavaScript -->
+                </div>
+                <div class="project-tabs">
+                    <div class="tab active" data-tab="project-overview">Overview</div>
+                    <div class="tab" data-tab="project-tasks">Tasks</div>
+                    <div class="tab" data-tab="project-members">Team Members</div>
+                </div>
+                <div class="project-tab-content" id="project-overview-content" style="display: block;">
+                    <div class="project-info"></div>
+                </div>
+                <div class="project-tab-content" id="project-tasks-content">
+                    <div class="project-tasks-header">
+                        <h3>Project Tasks</h3>
+                        <button class="add-task-btn" id="add-task-project-btn"><i class="fas fa-plus"></i> Add Task</button>
+                    </div>
+                    <div class="project-tasks-list"></div>
+                </div>
+                <div class="project-tab-content" id="project-members-content">
+                    <div class="project-members-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="add-task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Task</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-task-form">
+                    <div class="form-group">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" id="task-title" placeholder="Enter task title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Description</label>
+                        <textarea id="task-description" placeholder="Enter task description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-project">Project</label>
+                        <select id="task-project" required>
+                            <option value="">Select a project</option>
+                            <option value="ecommerce">E-commerce Project</option>
+                            <option value="mobile-app">Mobile App Development</option>
+                            <option value="database">Database Migration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-assignee">Assign To</label>
+                        <select id="task-assignee" required>
+                            <option value="">Select team member</option>
+                            <option value="js">John Smith</option>
+                            <option value="ew">Emma Wilson</option>
+                            <option value="mb">Michael Brown</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="task-due-date">Due Date</label>
+                            <input type="date" id="task-due-date" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="task-priority">Priority</label>
+                            <select id="task-priority" required>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="create-announcement-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Team Announcement</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="create-announcement-form">
+                    <div class="form-group">
+                        <label for="announcement-title">Title</label>
+                        <input type="text" id="announcement-title" placeholder="Enter announcement title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="announcement-content">Content</label>
+                        <textarea id="announcement-content" placeholder="Enter announcement content" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="team-only" checked>
+                            <label for="team-only">This announcement will be visible only to your team members.</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                        <button type="submit" class="btn-primary">Create Announcement</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        <script src="js/Team_Leader.js"></script>
+        <script>
+        // Display current team leader info from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('leaderName').textContent = user.name || 'Team Leader';
+                document.getElementById('leaderRole').textContent = user.role || 'Team Leader';
+                document.getElementById('leaderId').textContent = user.userId ? `User ID: ${user.userId}` : '';
+                document.getElementById('leaderEmail').textContent = user.email || '';
+                // Set avatar initials
+                if (user.name) {
+                    const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                    document.getElementById('leaderAvatar').textContent = initials;
+                }
+            }
+        });
+        </script>
+</body>
+</html>

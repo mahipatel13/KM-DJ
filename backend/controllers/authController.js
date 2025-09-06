@@ -1,3 +1,12 @@
+// Get all employees (for team leader to add to team)
+exports.getAllEmployees = async (req, res) => {
+  try {
+    const users = await User.find({ role: 'Employee' }, '-password');
+    res.json({ success: true, users });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
 const User = require('../models/user');
 
 // Fetch email by userId

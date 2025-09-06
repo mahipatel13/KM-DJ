@@ -9,14 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <header class="header">
-    <a href="index.html" class="brand">NoirAuth</a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-    </nav>
-  </header>
+
   <div class="container fade-in-slide-up">
     <h1>Login</h1>
   <form id="loginForm">
@@ -57,11 +50,15 @@
     
     </div>
   </div>
-  <div id="footer"></div>
+  <div id="footer" style="background:#f3f4f6;padding:32px 0 0 0;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:64px;max-width:1100px;margin:0 auto 0 auto;">
+     
+    </div>
+    <div style="text-align:center;color:#aaa;font-size:0.95rem;margin:32px 0 0 0;">&copy; 2025 SynergySphere. All rights reserved.</div>
+  </div>
   <script src="js/main.js"></script>
   <script src="js/animation.js"></script>
   <script>
-    importComponent('footer', 'components/footer.html');
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -75,9 +72,20 @@
         const data = await res.json();
         alert(data.message);
         if (data.success) {
-          // If CEO, redirect to ceo-dashboard.html, else to index.html
+          // Store user info for later use
+          localStorage.setItem('user', JSON.stringify({
+            name: data.name,
+            role: data.role,
+            userId: data.userId,
+            email: data.email
+          }));
+          // If CEO, redirect to ceo-dashboard.html, if Employee, redirect to Employee.html, if Team-Leader, redirect to Team_Leader.html, else to index.html
           if (data.role && data.role.toLowerCase() === 'ceo') {
             window.location.href = 'ceo-dashboard.html';
+          } else if (data.role && data.role.toLowerCase() === 'employee') {
+            window.location.href = 'Employee.html';
+          } else if (data.role && (data.role.toLowerCase() === 'team-leader' || data.role.toLowerCase() === 'team leader')) {
+            window.location.href = 'Team_Leader.html';
           } else {
             window.location.href = 'index.html';
           }
@@ -117,7 +125,6 @@
           const data = await res.json();
           if (data.success) {
             alert('Password set successfully!');
-            // On success, hide the modal and reload the login page to clear the form.
             forgotModal.style.display = 'none';
             window.location.href = 'login.html';
           } else {

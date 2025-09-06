@@ -14,9 +14,11 @@
                 <div class="avatar">
                     <i class="fas fa-user"></i>
                 </div>
-                <div class="user-info">
-                    <h3>John Smith</h3>
-                    <p>Employee</p>
+                <div class="user-info" id="employeeUserInfo">
+                    <h3 id="employeeName">Employee Name</h3>
+                    <p id="employeeRole">Role</p>
+                    <p id="employeeId" style="font-size:12px;color:#888;"></p>
+                    <p id="employeeEmail" style="font-size:12px;color:#888;"></p>
                 </div>
                 <div class="collapse-btn">
                     <i class="fas fa-chevron-left"></i>
@@ -477,6 +479,18 @@
         </div>
     </template>
 
-    <script src="js/Employee.js"></script>
+        <script src="js/Employee.js"></script>
+        <script>
+        // Display current user info from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('employeeName').textContent = user.name || 'Employee';
+                document.getElementById('employeeRole').textContent = user.role || '';
+                document.getElementById('employeeId').textContent = user.userId ? `User ID: ${user.userId}` : '';
+                document.getElementById('employeeEmail').textContent = user.email || '';
+            }
+        });
+        </script>
 </body>
 </html>

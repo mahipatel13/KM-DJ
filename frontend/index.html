@@ -7,14 +7,119 @@
   <link rel="stylesheet" href="css/animation.css">
 </head>
 <body>
-  <div id="header"></div>
-  <div class="container">
-    <h1>Welcome to NoirAuth</h1>
-    <p>This is the home page.</p>
-  </div>
-  <div id="footer"></div>
-  <script src="js/main.js"></script>
-  <script src="js/animation.js"></script>
-  <script>importComponent('header', 'components/header.html'); importComponent('footer', 'components/footer.html');</script>
+  <header style="display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 48px;position:fixed;top:0;left:0;width:100vw;background:#fafbfc;z-index:100;box-shadow:0 2px 8px #0001;">
+    <div style="font-size:2rem;font-weight:700;letter-spacing:-1px;">SynergySphere</div>
+    <nav style="flex:1;text-align:center;">
+      <a href="#features" style="margin:0 18px;color:#444;text-decoration:none;font-weight:500;">Features</a>
+      <a href="#about" style="margin:0 18px;color:#444;text-decoration:none;font-weight:500;">About</a>
+      <a href="#pricing" style="margin:0 18px;color:#444;text-decoration:none;font-weight:500;">Pricing</a>
+      <a href="#contact" style="margin:0 18px;color:#444;text-decoration:none;font-weight:500;">Contact</a>
+    </nav>
+    <div>
+      <a href="login.html" style="margin-right:12px;color:#444;text-decoration:none;font-weight:500;">Sign In</a>
+      <a href="signup.html" style="background:#111;color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-weight:600;">Get Started</a>
+    </div>
+  </header>
+  <main style="padding-top:90px;padding-bottom:40px;">
+  <section style="text-align:center;padding:96px 0 64px 0;min-height:70vh;display:flex;flex-direction:column;justify-content:center;">
+      <img src="img/hero.jpg" alt="Teamwork" style="max-width:180px;width:100px;margin-bottom:24px;border-radius:50%;box-shadow:0 4px 32px #0001;object-fit:cover;" onerror="this.style.display='none'">
+      <h1 style="font-size:3.5rem;font-weight:800;margin:0 0 16px 0;letter-spacing:-2px;">Where Teams<br>Thrive Together</h1>
+      <p style="max-width:600px;margin:0 auto 32px auto;font-size:1.25rem;color:#555;">SynergySphere transforms the way teams collaborate. More than project management—it's the intelligent backbone that helps teams stay organized, communicate better, and achieve their best work together.</p>
+      <div style="margin:32px 0 0 0;">
+        <a href="signup.html" style="background:#111;color:#fff;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;margin-right:16px;">Sign Up</a>
+        <a href="login.html" style="background:#fff;color:#111;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;border:1.5px solid #111;">Log In</a>
+      </div>
+      <div style="display:flex;justify-content:center;gap:64px;margin-top:56px;flex-wrap:wrap;">
+        <div style="text-align:center;min-width:160px;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">👥</div>
+          <div style="font-size:1.5rem;font-weight:700;">500+</div>
+          <div style="color:#888;">Teams Collaborating</div>
+        </div>
+        <div style="text-align:center;min-width:160px;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">🎯</div>
+          <div style="font-size:1.5rem;font-weight:700;">98%</div>
+          <div style="color:#888;">Project Success Rate</div>
+        </div>
+        <div style="text-align:center;min-width:160px;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">⚡</div>
+          <div style="font-size:1.5rem;font-weight:700;">40%</div>
+          <div style="color:#888;">Faster Delivery</div>
+        </div>
+      </div>
+    </section>
+    <section id="features" style="padding:48px 0 64px 0;background:linear-gradient(180deg,#fafbfc 80%,#f3f4f6 100%);">
+      <h2 style="text-align:center;font-size:2.5rem;font-weight:700;margin-bottom:12px;">Everything Your Team Needs</h2>
+      <p style="text-align:center;max-width:700px;margin:0 auto 40px auto;color:#666;font-size:1.1rem;">SynergySphere addresses the core pain points that slow teams down, with intelligent features that help you stay ahead of problems.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;max-width:1100px;margin:0 auto;">
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">💬</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Smart Communication</div>
+          <div style="color:#666;">Project-specific threaded discussions that keep conversations organized and accessible.</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🗓️</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Intelligent Task Management</div>
+          <div style="color:#666;">Assign tasks with deadlines, track progress, and get proactive alerts before issues arise.</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🤝</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Team Collaboration</div>
+          <div style="color:#666;">Add members, manage permissions, and ensure everyone stays aligned on project goals.</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">📊</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Visual Progress Tracking</div>
+          <div style="color:#666;">Clear, intuitive dashboards that show real-time progress and identify potential bottlenecks.</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🛡️</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Enterprise Security</div>
+          <div style="color:#666;">Bank-level security with role-based access control and data encryption.</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;box-shadow:0 2px 12px #0001;padding:32px 28px;flex:1 1 280px;max-width:320px;min-width:220px;">
+          <div style="font-size:2rem;margin-bottom:10px;">📱</div>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;">Mobile & Desktop Ready</div>
+          <div style="color:#666;">Native experience across all devices, so your team can collaborate from anywhere.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer fade-in-slide-up" style="background:#000;color:#fff;padding:40px 0 0 0;border-radius:16px;margin:32px 16px 16px 16px;box-shadow:0 4px 16px #0002;">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;max-width:1400px;margin:0 auto;gap:32px;">
+      <div style="flex:0 0 320px;display:flex;align-items:center;justify-content:center;">
+        <img src="img/footer-img.jpg" alt="Footer Image" style="width:280px;height:180px;object-fit:cover;border-radius:24px;">
+      </div>
+      <div style="flex:1;display:flex;justify-content:space-between;gap:32px;">
+        <div>
+          <h4 style="color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:10px;border-bottom:2px solid #fff;width:fit-content;padding-bottom:4px;">Quick Links</h4>
+          <ul style="list-style:none;padding:0;margin:0;color:#fff;font-size:1.1rem;">
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Home</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">About Us</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Services</a></li>
+            <li><a href="#" style="color:#fff;text-decoration:none;">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:10px;border-bottom:2px solid #fff;width:fit-content;padding-bottom:4px;">Company</h4>
+          <ul style="list-style:none;padding:0;margin:0;color:#fff;font-size:1.1rem;">
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Careers</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Blog</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Press</a></li>
+            <li><a href="#" style="color:#fff;text-decoration:none;">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:10px;border-bottom:2px solid #fff;width:fit-content;padding-bottom:4px;">Connect with us</h4>
+          <ul style="list-style:none;padding:0;margin:0;color:#fff;font-size:1.1rem;">
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Facebook</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Twitter</a></li>
+            <li style="margin-bottom:8px;"><a href="#" style="color:#fff;text-decoration:none;">Instagram</a></li>
+            <li><a href="#" style="color:#fff;text-decoration:none;">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;color:#aaa;font-size:0.95rem;margin:32px 0 0 0;">&copy; 2025 SynergySphere. All rights reserved.</div>
+  </footer>
 </body>
 </html>

@@ -209,6 +209,92 @@
         </div>
       </div>
     </section>
+    <section id="teamsSection" style="display:none">
+      <h2>Team Management</h2>
+      <button id="createTeamBtn" style="float:right;margin-bottom:16px;padding:8px 18px;background:#111;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;">+ Create Team</button>
+      <div style="clear:both"></div>
+  <div id="teamList" style="display:flex;gap:24px;flex-wrap:wrap;"></div>
+      <!-- Create Team Modal -->
+      <div id="createTeamModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
+          <button id="closeCreateTeamModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;">&times;</button>
+          <h2 style="text-align:center;margin-bottom:24px;">Create New Team</h2>
+          <form id="createTeamForm" style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <label for="teamName">Team Name:</label>
+              <input type="text" id="teamName" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div>
+              <label for="teamDesc">Description:</label>
+              <textarea id="teamDesc" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;"></textarea>
+            </div>
+            <div>
+              <label for="teamLeader">Leader:</label>
+              <select id="teamLeader" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+                <option value="">Select Leader</option>
+              </select>
+            </div>
+            <div>
+              <label for="teamDeadline">Deadline:</label>
+              <input type="date" id="teamDeadline" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <button type="submit" style="width:100%;padding:12px;background:#4B0082;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Create Team</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="projectsSection" style="display:none">
+      <h2>Project Management</h2>
+  <button id="createProjectBtn" style="float:right;margin-bottom:16px;padding:8px 18px;background:#111;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;">+ Create Project</button>
+      <div style="clear:both"></div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <!-- Create Project Modal -->
+      <div id="createProjectModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
+          <button id="closeCreateProjectModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;">&times;</button>
+          <h2 style="text-align:center;margin-bottom:24px;">Create New Project</h2>
+          <form id="createProjectForm" style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <label for="projectName">Project Name:</label>
+              <input type="text" id="projectName" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div>
+              <label for="projectDesc">Description:</label>
+              <textarea id="projectDesc" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;"></textarea>
+            </div>
+            <div>
+              <label for="projectLeader">Team Leader:</label>
+              <select id="projectLeader" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+                <option value="">Select Leader</option>
+              </select>
+            </div>
+            <div>
+              <label for="projectDeadline">Deadline:</label>
+              <input type="date" id="projectDeadline" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div>
+              <label for="projectBudget">Budget:</label>
+              <input type="number" id="projectBudget" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <button type="submit" style="width:100%;padding:12px;background:#4B0082;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Create Project</button>
+          </form>
+        </div>
+      </div>
+
+  <div id="projectList" style="display:flex;gap:24px;flex-wrap:wrap;"></div>
+      </div>
+    </section>
+    <section id="announcementsSection" style="display:none">
+      <h2>Announcements</h2>
+      <div class="announcements">
+        <div class="announcement">
+          <div class="announcement-title">Welcome to the new dashboard!</div>
+          <div>We're excited to launch our new CEO dashboard with enhanced features.</div>
+          <div class="announcement-date">9/6/2025</div>
+        </div>
+      </div>
+    </section>
+  </div>
 </style>
 <script>
 // Sidebar navigation logic
@@ -311,59 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('[data-section=\"users\"]').addEventListener('click', loadUsers);
 });
 </script>
-    <section id="teamsSection" style="display:none">
-      <h2>Team Management</h2>
-      <button id="createTeamBtn" style="float:right;margin-bottom:16px;padding:8px 18px;background:#111;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;">+ Create Team</button>
-      <div style="clear:both"></div>
-      <div id="teamList" style="display:flex;gap:24px;flex-wrap:wrap;">
-        <div class="card" style="min-width:260px;">
-          <b>Development Team</b><br>
-          <span style="color:#888;">Main development team for projects</span><br>
-          Members: 0<br>
-          Leader: Alice Leader
-        </div>
-        <div class="card" style="min-width:260px;">
-          <b>Marketing Team</b><br>
-          <span style="color:#888;">Team responsible for marketing campaigns and brand management</span><br>
-          Members: 0<br>
-          Leader: Not assigned<br>
-          Deadline: 2/15/2025
-        </div>
-        <div class="card" style="min-width:260px;">
-          <b>odoo</b><br>
-          <span style="color:#888;">odoo</span><br>
-          Members: 0<br>
-          Leader: kavya
-        </div>
-      </div>
-      <!-- Create Team Modal -->
-      <div id="createTeamModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;align-items:center;justify-content:center;">
-        <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
-          <button id="closeCreateTeamModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;">&times;</button>
-          <h2 style="text-align:center;margin-bottom:24px;">Create New Team</h2>
-          <form id="createTeamForm" style="display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <label for="teamName">Team Name:</label>
-              <input type="text" id="teamName" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <div>
-              <label for="teamDesc">Description:</label>
-              <textarea id="teamDesc" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;"></textarea>
-            </div>
-            <div>
-              <label for="teamLeader">Leader:</label>
-              <input type="text" id="teamLeader" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <div>
-              <label for="teamDeadline">Deadline:</label>
-              <input type="date" id="teamDeadline" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <button type="submit" style="width:100%;padding:12px;background:#4B0082;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Create Team</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  <script>
+<script>
   // Create Team Modal logic
   const createTeamBtn = document.getElementById('createTeamBtn');
   const createTeamModal = document.getElementById('createTeamModal');
@@ -373,76 +407,141 @@ document.addEventListener('DOMContentLoaded', function() {
 
   createTeamBtn.onclick = () => { createTeamModal.style.display = 'flex'; };
   closeCreateTeamModal.onclick = () => { createTeamModal.style.display = 'none'; };
-  createTeamForm.onsubmit = function(e) {
+
+  // Fetch and display teams
+  async function loadTeams() {
+    const res = await fetch('/api/teams');
+    const data = await res.json();
+    teamList.innerHTML = '';
+    if (data.success && data.teams.length > 0) {
+      data.teams.forEach(team => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.minWidth = '260px';
+        card.innerHTML = `<b>${team.name}</b><br><span style='color:#888;'>${team.desc || ''}</span><br>Members: ${team.members || 0}<br>Leader: ${team.leader || 'Not assigned'}${team.deadline ? `<br>Deadline: ${team.deadline}` : ''}`;
+        teamList.appendChild(card);
+      });
+    } else {
+      teamList.innerHTML = '<div style="color:#888;">No teams found.</div>';
+    }
+  }
+
+  // Populate leader dropdown with users whose userId starts with 'T'
+  async function populateLeaders() {
+    const res = await fetch('/api/auth/users');
+    const data = await res.json();
+    const leaderSelect = document.getElementById('teamLeader');
+    leaderSelect.innerHTML = '<option value="">Select Leader</option>';
+    if (data.success && data.users.length > 0) {
+      data.users.filter(u => u.userId && u.userId.startsWith('T')).forEach(user => {
+        leaderSelect.innerHTML += `<option value="${user.name}">${user.name} (${user.userId})</option>`;
+      });
+    }
+  }
+
+  // Add team
+  createTeamForm.onsubmit = async function(e) {
     e.preventDefault();
     const name = document.getElementById('teamName').value;
     const desc = document.getElementById('teamDesc').value;
     const leader = document.getElementById('teamLeader').value || 'Not assigned';
     const deadline = document.getElementById('teamDeadline').value;
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.minWidth = '260px';
-    card.innerHTML = `<b>${name}</b><br><span style='color:#888;'>${desc}</span><br>Members: 0<br>Leader: ${leader}${deadline ? `<br>Deadline: ${deadline}` : ''}`;
-    teamList.appendChild(card);
-    createTeamModal.style.display = 'none';
-    createTeamForm.reset();
-  };
-  </script>
-    <section id="projectsSection" style="display:none">
-      <h2>Project Management</h2>
-      <button style="float:right;margin-bottom:16px;padding:8px 18px;background:#111;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;">+ Create Project</button>
-      <div style="clear:both"></div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;">
-        <div class="card" style="min-width:260px;">
-          <b>New Website</b><br>
-          <span style="color:#888;">Company website redesign project</span><br>
-          Team: Development Team<br>
-          Deadline: 10/6/2025<br>
-          Budget: $50,000
-        </div>
-        <div class="card" style="min-width:260px;">
-          <b>odoo</b><br>
-          <span style="color:#888;">odoo</span><br>
-          Team: odoo<br>
-          Deadline: 9/9/2025<br>
-          Budget: $-3
-        </div>
-      </div>
-    </section>
-    <section id="announcementsSection" style="display:none">
-      <h2>Announcements</h2>
-      <div class="announcements">
-        <div class="announcement">
-          <div class="announcement-title">Welcome to the new dashboard!</div>
-          <div>We're excited to launch our new CEO dashboard with enhanced features.</div>
-          <div class="announcement-date">9/6/2025</div>
-        </div>
-      </div>
-    </section>
-  </div>
-</style>
-<script>
-// Sidebar navigation logic
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('#sidebarNav a');
-  const sections = {
-    dashboard: document.getElementById('dashboardSection'),
-    users: document.getElementById('usersSection'),
-    teams: document.getElementById('teamsSection'),
-    projects: document.getElementById('projectsSection'),
-    announcements: document.getElementById('announcementsSection')
-  };
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      Object.values(sections).forEach(sec => sec.style.display = 'none');
-      const section = sections[this.dataset.section];
-      if (section) section.style.display = '';
+    const res = await fetch('/api/teams', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, desc, leader, deadline })
     });
+    const data = await res.json();
+    if (data.success) {
+      createTeamModal.style.display = 'none';
+      createTeamForm.reset();
+      await loadTeams();
+    } else {
+      alert(data.message || 'Failed to create team');
+    }
+  };
+
+  // Show modal and populate leaders
+  createTeamBtn.onclick = () => {
+    createTeamModal.style.display = 'flex';
+    populateLeaders();
+  };
+
+  // Load teams when Manage Teams section is shown
+  document.querySelector('[data-section="teams"]').addEventListener('click', loadTeams);
+  // Load teams on page load
+  loadTeams();
+  </script>
+<script>
+// Project Modal logic
+const createProjectBtn = document.getElementById('createProjectBtn');
+const createProjectModal = document.getElementById('createProjectModal');
+const closeCreateProjectModal = document.getElementById('closeCreateProjectModal');
+const createProjectForm = document.getElementById('createProjectForm');
+const projectList = document.getElementById('projectList');
+
+// Populate leader dropdown with users whose userId starts with 'T'
+async function populateProjectLeaders() {
+  const res = await fetch('/api/auth/users');
+  const data = await res.json();
+  const leaderSelect = document.getElementById('projectLeader');
+  leaderSelect.innerHTML = '<option value="">Select Leader</option>';
+  if (data.success && data.users.length > 0) {
+    data.users.filter(u => u.userId && u.userId.startsWith('T')).forEach(user => {
+      leaderSelect.innerHTML += `<option value="${user.name}">${user.name} (${user.userId})</option>`;
+    });
+  }
+}
+
+// Fetch and display projects
+async function loadProjects() {
+  const res = await fetch('/api/projects');
+  const data = await res.json();
+  projectList.innerHTML = '';
+  if (data.success && data.projects.length > 0) {
+    data.projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.minWidth = '260px';
+      card.innerHTML = `<b>${project.name}</b><br><span style='color:#888;'>${project.desc || ''}</span><br>Leader: ${project.leader || 'Not assigned'}<br>Deadline: ${project.deadline || ''}<br>Budget: $${project.budget || 0}`;
+      projectList.appendChild(card);
+    });
+  } else {
+    projectList.innerHTML = '<div style="color:#888;">No projects found.</div>';
+  }
+}
+
+createProjectBtn.onclick = () => {
+  createProjectModal.style.display = 'flex';
+  populateProjectLeaders();
+};
+closeCreateProjectModal.onclick = () => { createProjectModal.style.display = 'none'; };
+createProjectForm.onsubmit = async function(e) {
+  e.preventDefault();
+  const name = document.getElementById('projectName').value;
+  const desc = document.getElementById('projectDesc').value;
+  const leader = document.getElementById('projectLeader').value || 'Not assigned';
+  const deadline = document.getElementById('projectDeadline').value;
+  const budget = document.getElementById('projectBudget').value;
+  const res = await fetch('/api/projects', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, desc, leader, deadline, budget })
   });
-});
+  const data = await res.json();
+  if (data.success) {
+    createProjectModal.style.display = 'none';
+    createProjectForm.reset();
+    await loadProjects();
+  } else {
+    alert(data.message || 'Failed to create project');
+  }
+};
+
+// Load projects when Manage Projects section is shown
+document.querySelector('[data-section="projects"]').addEventListener('click', loadProjects);
+// Load projects on page load
+loadProjects();
 </script>
 </body>
 </html>

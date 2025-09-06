@@ -1,6 +1,9 @@
+
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
+// Get all employees (for team leader to add to team)
+router.get('/employees', authController.getAllEmployees);
 
 
 
