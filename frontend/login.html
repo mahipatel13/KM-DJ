@@ -5,56 +5,67 @@
   <title>Login</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animation.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <div id="header"></div>
-  <div class="container">
+  <header class="header">
+    <a href="index.html" class="brand">NoirAuth</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+  <div class="container fade-in-slide-up">
     <h1>Login</h1>
     <form id="loginForm">
-      <label>User ID:</label>
-      <input type="text" name="userId" required placeholder="E001, T001, C001...">
+  <label>Email:</label>
+  <input type="email" name="email" required>
       <label>Password:</label>
       <input type="password" name="password" required> 
       <button type="submit">Login</button>
     </form>
-      <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
-      <div id="forgotModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;">
-        <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
-          <button id="closeModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;">&times;</button>
-          <h2 style="text-align:center;margin-bottom:24px;">Set New Password</h2>
-          <form id="resetForm" style="display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <label for="resetEmail">Email:</label>
-              <input type="email" name="email" id="resetEmail" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <div>
-              <label for="newPassword">New Password:</label>
-              <input type="password" name="newPassword" id="newPassword" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <div>
-              <label for="confirmPassword">Confirm Password:</label>
-              <input type="password" name="confirmPassword" id="confirmPassword" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd;">
-            </div>
-            <button type="submit" style="width:100%;padding:12px;background:#111;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Set New Password</button>
-          </form>
-        </div>
+    <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+    <div id="forgotModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:1000;">
+      <div style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;margin:80px auto;box-shadow:0 4px 32px #bbb;position:relative;">
+        <button id="closeModal" style="position:absolute;top:12px;right:12px;background:#111;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:0;padding:0;">&times;</button>
+        <h2 style="text-align:center;margin-bottom:24px;">Set New Password</h2>
+        <form id="resetForm" style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <label for="resetEmail">Email:</label>
+            <input type="email" name="email" id="resetEmail" required>
+          </div>
+          <div>
+            <label for="newPassword">New Password:</label>
+            <input type="password" name="newPassword" id="newPassword" required>
+          </div>
+          <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+          </div>
+          <button type="submit" style="width:100%;padding:12px;background:#111;color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;">Set New Password</button>
+        </form>
       </div>
-      <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    <!-- Add this after the login form but before the "Don't have an account" text -->
+    
+    </div>
   </div>
   <div id="footer"></div>
   <script src="js/main.js"></script>
   <script src="js/animation.js"></script>
   <script>
-    importComponent('header', 'components/header.html');
     importComponent('footer', 'components/footer.html');
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const userId = this.userId.value;
+      const email = this.email.value;
       const password = this.password.value;
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, password })
+        body: JSON.stringify({ email, password })
       });
       const data = await res.json();
       if (data.success) {
