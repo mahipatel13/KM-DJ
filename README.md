@@ -52,17 +52,6 @@ Manage Projects: Oversee all ongoing and completed projects.
 
 Announcements: Company-wide notices or announcements.
 
-Screenshots
-![b01a8ce1-01db-4426-bf30-b2d97aea22f6](https://github.com/user-attachments/assets/1a5f5ad6-a604-4838-8c15-afbd1801d03c)
-
-![2cc44af5-6aa4-4274-a543-3d0cc6fb740f](https://github.com/user-attachments/assets/b5b7ae25-c363-4041-8526-4a4a0f063e29)
-
-<img width="755" height="759" alt="image" src="https://github.com/user-attachments/assets/baa73344-fa2e-4622-91f3-ea2bc0d0018d" />
-<img width="1280" height="626" alt="image" src="https://github.com/user-attachments/assets/3b0d35b4-0d24-4a93-b4a1-7c54259a5c75" />
-<img width="1280" height="619" alt="image" src="https://github.com/user-attachments/assets/8b4b0022-b4b2-4bdb-b60b-c6f488ae38e0" />
-<img width="1280" height="623" alt="image" src="https://github.com/user-attachments/assets/a13286ca-e141-4cc5-9ac4-4e8217fb1edb" />
-
-
 
 Refernce Video :
 https://drive.google.com/drive/folders/1swLCyD8bktYEHDRb5Ixi_rTNre5XZoeR
